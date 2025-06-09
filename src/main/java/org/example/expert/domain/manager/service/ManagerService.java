@@ -35,7 +35,7 @@ public class ManagerService {
         Todo todo = todoRepository.findById(todoId)
                 .orElseThrow(() -> new InvalidRequestException("Todo not found"));
 
-        // 테스트 코드 2-3 조건문에 null 조건 추가하여 안전하게 비교할 수 있도록 개선
+        // 테스트 코드 2-3 조건문에 null를 추가하여 비교할 수 있도록 개선하였음.
         if (todo.getUser() == null || !ObjectUtils.nullSafeEquals(user.getId(), todo.getUser().getId())) {
             throw new InvalidRequestException("담당자를 등록하려고 하는 유저가 일정을 만든 유저가 유효하지 않습니다.");
         }
