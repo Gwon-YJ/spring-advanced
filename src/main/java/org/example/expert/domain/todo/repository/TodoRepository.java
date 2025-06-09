@@ -12,6 +12,7 @@ import java.util.Optional;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
 
+    // N+1 문제 해결
     @EntityGraph(attributePaths = "user")
     Page<Todo> findAllByOrderByModifiedAtDesc(Pageable pageable);
 
